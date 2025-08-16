@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Spreadsheet to JSON Converter</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f9fafb;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #4a9b3c;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 2px dashed #e5e7eb;
+            border-radius: 8px;
+        }
+        .section h2 {
+            color: #374151;
+            margin-top: 0;
+        }
+        .upload-area {
+            border: 2px dashed #4a9b3c;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .upload-area:hover {
+            background: #f0f9f0;
+        }
+        .upload-area.dragover {
+            background: #e6f7e6;
+            border-color: #2d5e24;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .btn {
+            background: #4a9b3c;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .btn:hover {
+            background: #2d5e24;
+        }
+        .btn-secondary {
+            background: #6b7280;
+        }
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+        .output {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+        .instructions {
+            background: #f3f4f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .success {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        .error {
+            background: #fecaca;
+            color: #991b1b;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background: #f9fafb;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 SIG Member Spreadsheet to JSON Converter</h1>
+        
+        <div class="instructions">
+            <h3>📋 How to Use This Tool:</h3>
+            <ol>
+                <li><strong>Prepare your CSV files</strong> - Export from Google Sheets or Excel as CSV format</li>
+                <li><strong>Upload each file</strong> in the sections below (Executive Board, General Members, Alumni)</li>
+                <li><strong>Review the generated JSON</strong> in the output section</li>
+                <li><strong>Copy and save</strong> the JSON to your <code>data/members.json</code> file</li>
+            </ol>
+            
+            <h4>📊 Required CSV Column Headers:</h4>
+            <table>
+                <tr>
+                    <th>Section</th>
+                    <th>Required Columns</th>
+                </tr>
+                <tr>
+                    <td>Executive Board</td>
+                    <td>Name, Role, Major, Year, Image_Filename, LinkedIn_URL</td>
+                </tr>
+                <tr>
+                    <td>General Members</td>
+                    <td>Name, Major, Year, Interest, Image_Filename, Category</td>
+                </tr>
+                <tr>
+                    <td>Alumni</td>
+                    <td>Name, Current_Role, Company, Graduation_Year, Image_Filename, LinkedIn_URL</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>👥 Executive Board CSV</h2>
+            <div class="upload-area" onclick="document.getElementById('executives-file').click()">
+                <p>📄 Click to upload Executive Board CSV file</p>
+                <p style="font-size: 14px; color: #6b7280;">Or drag and drop here</p>
+            </div>
+            <input type="file" id="executives-file" accept=".csv" onchange="handleFile(this, 'executives')">
+            <div id="executives-preview"></div>
+        </div>
+
+        <div class="section">
+            <h2>🎓 General Members CSV</h2>
+            <div class="upload-area" onclick="document.getElementById('members-file').click()">
+                <p>📄 Click to upload General Members CSV file</p>
+                <p style="font-size: 14px; color: #6b7280;">Or drag and drop here</p>
+            </div>
+            <input type="file" id="members-file" accept=".csv" onchange="handleFile(this, 'members')">
+            <div id="members-preview"></div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Alumni CSV</h2>
+            <div class="upload-area" onclick="document.getElementById('alumni-file').click()">
+                <p>📄 Click to upload Alumni CSV file</p>
+                <p style="font-size: 14px; color: #6b7280;">Or drag and drop here</p>
+            </div>
+            <input type="file" id="alumni-file" accept=".csv" onchange="handleFile(this, 'alumni')">
+            <div id="alumni-preview"></div>
+        </div>
+
+        <div class="section">
+            <h2>⚡ Generate JSON</h2>
+            <button class="btn" onclick="generateJSON()">🔄 Convert to JSON</button>
+            <button class="btn btn-secondary" onclick="downloadJSON()">💾 Download JSON File</button>
+            <button class="btn btn-secondary" onclick="copyToClipboard()">📋 Copy to Clipboard</button>
+            
+            <div id="json-output"></div>
+        </div>
+    </div>
+
+    <script>
+        let memberData = {
+            executives: [],
+            members: [],
+            alumni: []
+        };
+
+        function handleFile(input, type) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const csv = e.target.result;
+                const data = parseCSV(csv);
+                memberData[type] = data;
+                
+                showPreview(data, type);
+                showSuccess(`${type} data loaded successfully! (${data.length} entries)`);
+            };
+            reader.readAsText(file);
+        }
+
+        function parseCSV(csv) {
+            const lines = csv.trim().split('\n');
+            const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
+            const data = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const values = parseCSVLine(lines[i]);
+                if (values.length !== headers.length) continue;
+                
+                const row = {};
+                headers.forEach((header, index) => {
+                    row[header] = values[index] ? values[index].trim().replace(/"/g, '') : '';
+                });
+                data.push(row);
+            }
+
+            return data;
+        }
+
+        function parseCSVLine(line) {
+            const result = [];
+            let current = '';
+            let inQuotes = false;
+            
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    result.push(current);
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            
+            result.push(current);
+            return result;
+        }
+
+        function showPreview(data, type) {
+            const preview = document.getElementById(`${type}-preview`);
+            if (data.length === 0) {
+                preview.innerHTML = '<div class="error">No data found in CSV file</div>';
+                return;
+            }
+
+            const first = data[0];
+            const keys = Object.keys(first);
+            
+            let html = `<div class="success">✅ Loaded ${data.length} ${type}</div>`;
+            html += '<table><tr>';
+            keys.forEach(key => html += `<th>${key}</th>`);
+            html += '</tr>';
+            
+            // Show first 3 rows as preview
+            data.slice(0, 3).forEach(row => {
+                html += '<tr>';
+                keys.forEach(key => html += `<td>${row[key] || ''}</td>`);
+                html += '</tr>';
+            });
+            
+            if (data.length > 3) {
+                html += `<tr><td colspan="${keys.length}" style="text-align: center; font-style: italic;">... and ${data.length - 3} more</td></tr>`;
+            }
+            
+            html += '</table>';
+            preview.innerHTML = html;
+        }
+
+        function generateJSON() {
+            const json = {
+                executiveBoard: memberData.executives.map(member => ({
+                    name: member.Name || '',
+                    role: member.Role || '',
+                    major: member.Major || '',
+                    year: member.Year || '',
+                    image: member.Image_Filename ? `assets/members/${member.Image_Filename}` : 'assets/members/placeholder-member.jpg',
+                    linkedin: member.LinkedIn_URL || '#'
+                })),
+                generalMembers: memberData.members.map(member => ({
+                    name: member.Name || '',
+                    major: member.Major || '',
+                    year: member.Year || '',
+                    interest: member.Interest || '',
+                    image: member.Image_Filename ? `assets/members/${member.Image_Filename}` : 'assets/members/placeholder-member.jpg',
+                    category: (member.Category || member.Year || '').toLowerCase()
+                })),
+                alumni: memberData.alumni.map(member => ({
+                    name: member.Name || '',
+                    role: member.Current_Role || '',
+                    company: member.Company || '',
+                    year: member.Graduation_Year || '',
+                    image: member.Image_Filename ? `assets/members/${member.Image_Filename}` : 'assets/members/placeholder-member.jpg',
+                    linkedin: member.LinkedIn_URL || '#'
+                }))
+            };
+
+            const jsonString = JSON.stringify(json, null, 2);
+            
+            const output = document.getElementById('json-output');
+            output.innerHTML = `
+                <div class="success">✅ JSON generated successfully!</div>
+                <div class="output">${jsonString}</div>
+            `;
+
+            window.generatedJSON = jsonString;
+        }
+
+        function downloadJSON() {
+            if (!window.generatedJSON) {
+                showError('Please generate JSON first');
+                return;
+            }
+
+            const blob = new Blob([window.generatedJSON], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'members.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showSuccess('JSON file downloaded! Save this to your data/members.json file');
+        }
+
+        function copyToClipboard() {
+            if (!window.generatedJSON) {
+                showError('Please generate JSON first');
+                return;
+            }
+
+            navigator.clipboard.writeText(window.generatedJSON).then(() => {
+                showSuccess('JSON copied to clipboard! Paste into your data/members.json file');
+            }).catch(() => {
+                showError('Could not copy to clipboard. Please select and copy manually.');
+            });
+        }
+
+        function showSuccess(message) {
+            const div = document.createElement('div');
+            div.className = 'success';
+            div.textContent = message;
+            document.body.appendChild(div);
+            setTimeout(() => div.remove(), 5000);
+        }
+
+        function showError(message) {
+            const div = document.createElement('div');
+            div.className = 'error';
+            div.textContent = message;
+            document.body.appendChild(div);
+            setTimeout(() => div.remove(), 5000);
+        }
+
+        // Drag and drop functionality
+        document.querySelectorAll('.upload-area').forEach(area => {
+            area.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.classList.add('dragover');
+            });
+            
+            area.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                this.classList.remove('dragover');
+            });
+            
+            area.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('dragover');
+                
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    const input = this.parentNode.querySelector('input[type="file"]');
+                    input.files = files;
+                    input.dispatchEvent(new Event('change'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>

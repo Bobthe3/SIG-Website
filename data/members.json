@@ -1,0 +1,184 @@
+{
+  "executiveBoard": [
+    {
+      "name": "Sarah Chen",
+      "role": "President",
+      "major": "Economics & Environmental Studies",
+      "year": "Senior",
+      "image": "assets/members/sarah-chen.jpg",
+      "linkedin": "#"
+    },
+    {
+      "name": "Marcus Rodriguez", 
+      "role": "Vice President",
+      "major": "Finance & Data Science",
+      "year": "Junior",
+      "image": "assets/members/marcus-rodriguez.jpg",
+      "linkedin": "#"
+    },
+    {
+      "name": "Emily Zhang",
+      "role": "Director of Events", 
+      "major": "Business Economics",
+      "year": "Junior",
+      "image": "assets/members/emily-zhang.jpg",
+      "linkedin": "#"
+    },
+    {
+      "name": "David Park",
+      "role": "Director of Research",
+      "major": "Mathematics & Economics", 
+      "year": "Senior",
+      "image": "assets/members/david-park.jpg",
+      "linkedin": "#"
+    },
+    {
+      "name": "Priya Patel",
+      "role": "Marketing Director",
+      "major": "Communications & Environmental Studies",
+      "year": "Sophomore", 
+      "image": "assets/members/priya-patel.jpg",
+      "linkedin": "#"
+    },
+    {
+      "name": "James Thompson",
+      "role": "Treasurer",
+      "major": "Finance & Computer Science",
+      "year": "Junior",
+      "image": "assets/members/james-thompson.jpg", 
+      "linkedin": "#"
+    }
+  ],
+  "generalMembers": [
+    {
+      "name": "Alexandra Kim",
+      "major": "International Business",
+      "year": "Senior",
+      "interest": "ESG Research",
+      "image": "assets/members/placeholder-member.jpg",
+      "category": "senior"
+    },
+    {
+      "name": "Robert Johnson", 
+      "major": "Economics",
+      "year": "Senior",
+      "interest": "Impact Investing",
+      "image": "assets/members/placeholder-member.jpg",
+      "category": "senior"
+    },
+    {
+      "name": "Maria Gonzalez",
+      "major": "Finance", 
+      "year": "Junior",
+      "interest": "Green Bonds",
+      "image": "assets/members/placeholder-member.jpg",
+      "category": "junior"
+    },
+    {
+      "name": "Kevin Wu",
+      "major": "Data Science",
+      "year": "Junior", 
+      "interest": "Quantitative ESG",
+      "image": "assets/members/placeholder-member.jpg",
+      "category": "junior"
+    },
+    {
+      "name": "Samantha Lee",
+      "major": "Environmental Studies",
+      "year": "Junior",
+      "interest": "Climate Finance", 
+      "image": "assets/members/placeholder-member.jpg",
+      "category": "junior"
+    },
+    {
+      "name": "Daniel Martinez",
+      "major": "Business Economics",
+      "year": "Sophomore",
+      "interest": "Sustainable Portfolios",
+      "image": "assets/members/placeholder-member.jpg",
+      "category": "sophomore"
+    },
+    {
+      "name": "Rachel Brown", 
+      "major": "Political Science",
+      "year": "Sophomore", 
+      "interest": "Policy & Finance",
+      "image": "assets/members/placeholder-member.jpg",
+      "category": "sophomore"
+    },
+    {
+      "name": "Tyler Chen",
+      "major": "Computer Science",
+      "year": "Sophomore",
+      "interest": "FinTech & Sustainability",
+      "image": "assets/members/placeholder-member.jpg", 
+      "category": "sophomore"
+    },
+    {
+      "name": "Sophie Taylor",
+      "major": "Undeclared",
+      "year": "Freshman",
+      "interest": "Learning ESG", 
+      "image": "assets/members/placeholder-member.jpg",
+      "category": "freshman"
+    },
+    {
+      "name": "Michael Davis",
+      "major": "Pre-Business",
+      "year": "Freshman",
+      "interest": "Impact Investing",
+      "image": "assets/members/placeholder-member.jpg",
+      "category": "freshman"
+    },
+    {
+      "name": "Emma Wilson",
+      "major": "Environmental Science", 
+      "year": "Freshman",
+      "interest": "Climate Solutions",
+      "image": "assets/members/placeholder-member.jpg",
+      "category": "freshman"
+    },
+    {
+      "name": "Andrew Liu",
+      "major": "Mathematics",
+      "year": "Freshman", 
+      "interest": "Financial Modeling",
+      "image": "assets/members/placeholder-member.jpg",
+      "category": "freshman"
+    }
+  ],
+  "alumni": [
+    {
+      "name": "Jessica Wang",
+      "role": "ESG Analyst", 
+      "company": "BlackRock",
+      "year": "Class of 2023",
+      "image": "assets/members/placeholder-member.jpg",
+      "linkedin": "#"
+    },
+    {
+      "name": "Alex Thompson",
+      "role": "Sustainability Consultant",
+      "company": "EY",
+      "year": "Class of 2022", 
+      "image": "assets/members/placeholder-member.jpg",
+      "linkedin": "#"
+    },
+    {
+      "name": "Ryan Patel", 
+      "role": "Investment Analyst",
+      "company": "Vanguard",
+      "year": "Class of 2023",
+      "image": "assets/members/placeholder-member.jpg",
+      "linkedin": "#"
+    },
+    {
+      "name": "Lisa Chang",
+      "role": "Impact Investment Associate",
+      "company": "California Investment Office",
+      "year": "Class of 2022",
+      "image": "assets/members/placeholder-member.jpg", 
+      "linkedin": "#"
+    }
+  ]
+}
