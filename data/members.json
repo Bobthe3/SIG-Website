@@ -1,7 +1,7 @@
 {
   "executiveBoard": [
     {
-      "name": "Sarah Chen",
+      "name": "xyz",
       "role": "President",
       "major": "Economics & Environmental Studies",
       "year": "Senior",
@@ -9,7 +9,7 @@
       "linkedin": "#"
     },
     {
-      "name": "Marcus Rodriguez", 
+      "name": "iefowe", 
       "role": "Vice President",
       "major": "Finance & Data Science",
       "year": "Junior",
@@ -17,7 +17,7 @@
       "linkedin": "#"
     },
     {
-      "name": "Emily Zhang",
+      "name": "edewfe",
       "role": "Director of Events", 
       "major": "Business Economics",
       "year": "Junior",
@@ -25,7 +25,7 @@
       "linkedin": "#"
     },
     {
-      "name": "David Park",
+      "name": "Devan Velji",
       "role": "Director of Research",
       "major": "Mathematics & Economics", 
       "year": "Senior",
@@ -33,7 +33,7 @@
       "linkedin": "#"
     },
     {
-      "name": "Priya Patel",
+      "name": "Devan Velji",
       "role": "Marketing Director",
       "major": "Communications & Environmental Studies",
       "year": "Sophomore", 
@@ -41,7 +41,7 @@
       "linkedin": "#"
     },
     {
-      "name": "James Thompson",
+      "name": "Devan Velji",
       "role": "Treasurer",
       "major": "Finance & Computer Science",
       "year": "Junior",
@@ -51,7 +51,7 @@
   ],
   "generalMembers": [
     {
-      "name": "Alexandra Kim",
+      "name": "Devan Velji",
       "major": "International Business",
       "year": "Senior",
       "interest": "ESG Research",
@@ -59,7 +59,7 @@
       "category": "senior"
     },
     {
-      "name": "Robert Johnson", 
+      "name": "Devan Velji", 
       "major": "Economics",
       "year": "Senior",
       "interest": "Impact Investing",
@@ -67,7 +67,7 @@
       "category": "senior"
     },
     {
-      "name": "Maria Gonzalez",
+      "name": "Devan Velji",
       "major": "Finance", 
       "year": "Junior",
       "interest": "Green Bonds",
@@ -75,7 +75,7 @@
       "category": "junior"
     },
     {
-      "name": "Kevin Wu",
+      "name": "Devan Velji",
       "major": "Data Science",
       "year": "Junior", 
       "interest": "Quantitative ESG",
@@ -83,7 +83,7 @@
       "category": "junior"
     },
     {
-      "name": "Samantha Lee",
+      "name": "Devan Velji",
       "major": "Environmental Studies",
       "year": "Junior",
       "interest": "Climate Finance", 
@@ -91,7 +91,7 @@
       "category": "junior"
     },
     {
-      "name": "Daniel Martinez",
+      "name": "Devan Velji",
       "major": "Business Economics",
       "year": "Sophomore",
       "interest": "Sustainable Portfolios",
@@ -99,7 +99,7 @@
       "category": "sophomore"
     },
     {
-      "name": "Rachel Brown", 
+      "name": "Devan Velji", 
       "major": "Political Science",
       "year": "Sophomore", 
       "interest": "Policy & Finance",
@@ -107,49 +107,17 @@
       "category": "sophomore"
     },
     {
-      "name": "Tyler Chen",
+      "name": "Devan Velji",
       "major": "Computer Science",
       "year": "Sophomore",
       "interest": "FinTech & Sustainability",
       "image": "assets/members/placeholder-member.jpg", 
       "category": "sophomore"
-    },
-    {
-      "name": "Sophie Taylor",
-      "major": "Undeclared",
-      "year": "Freshman",
-      "interest": "Learning ESG", 
-      "image": "assets/members/placeholder-member.jpg",
-      "category": "freshman"
-    },
-    {
-      "name": "Michael Davis",
-      "major": "Pre-Business",
-      "year": "Freshman",
-      "interest": "Impact Investing",
-      "image": "assets/members/placeholder-member.jpg",
-      "category": "freshman"
-    },
-    {
-      "name": "Emma Wilson",
-      "major": "Environmental Science", 
-      "year": "Freshman",
-      "interest": "Climate Solutions",
-      "image": "assets/members/placeholder-member.jpg",
-      "category": "freshman"
-    },
-    {
-      "name": "Andrew Liu",
-      "major": "Mathematics",
-      "year": "Freshman", 
-      "interest": "Financial Modeling",
-      "image": "assets/members/placeholder-member.jpg",
-      "category": "freshman"
     }
   ],
   "alumni": [
     {
-      "name": "Jessica Wang",
+      "name": "Devan Velji",
       "role": "ESG Analyst", 
       "company": "BlackRock",
       "year": "Class of 2023",
@@ -157,7 +125,7 @@
       "linkedin": "#"
     },
     {
-      "name": "Alex Thompson",
+      "name": "Devan Velji",
       "role": "Sustainability Consultant",
       "company": "EY",
       "year": "Class of 2022", 
@@ -165,7 +133,7 @@
       "linkedin": "#"
     },
     {
-      "name": "Ryan Patel", 
+      "name": "Devan Velji", 
       "role": "Investment Analyst",
       "company": "Vanguard",
       "year": "Class of 2023",
@@ -173,7 +141,7 @@
       "linkedin": "#"
     },
     {
-      "name": "Lisa Chang",
+      "name": "Devan Velji",
       "role": "Impact Investment Associate",
       "company": "California Investment Office",
       "year": "Class of 2022",
