@@ -1,6 +1,18 @@
 // Main JavaScript file for SIG Website
 
+// Page loading effect
 document.addEventListener('DOMContentLoaded', function() {
+    // Add page transition effect
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+    
+    // Add smooth scroll behavior
+    document.documentElement.style.scrollBehavior = 'smooth';
+    
     // Mobile Navigation Toggle
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
@@ -374,6 +386,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize premium effects
     initParticleEffect();
     initCursorEffect();
+    
+    // Initialize enhanced navigation features
+    initFloatingActionButton();
+    initScrollProgressIndicator();
+    initSmoothScrollLinks();
 
     console.log('SIG Website loaded successfully!');
 });
@@ -556,3 +573,167 @@ function initCursorEffect() {
     
     updateCursor();
 }
+
+// Floating Action Button for Applications
+function initFloatingActionButton() {
+    const fab = document.createElement('div');
+    fab.className = 'floating-action-button';
+    fab.innerHTML = `
+        <a href="mailto:ucsdsustainableinvestment@gmail.com?subject=SIG Application" class="fab-link">
+            <i class="fas fa-paper-plane"></i>
+            <span class="fab-text">Apply Now</span>
+        </a>
+    `;
+    
+    fab.style.cssText = `
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--transition-medium);
+    `;
+    
+    const fabStyles = document.createElement('style');
+    fabStyles.textContent = `
+        .floating-action-button {
+            background: var(--gradient-primary);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-premium);
+            overflow: hidden;
+            animation: fabPulse 3s infinite;
+        }
+        
+        .fab-link {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            padding: var(--spacing-3) var(--spacing-4);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+            transition: all var(--transition-medium);
+        }
+        
+        .fab-link:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .fab-text {
+            white-space: nowrap;
+        }
+        
+        @keyframes fabPulse {
+            0%, 100% { box-shadow: var(--shadow-premium); }
+            50% { box-shadow: var(--shadow-glow); }
+        }
+        
+        @media (max-width: 768px) {
+            .floating-action-button {
+                bottom: 60px;
+                right: 15px;
+            }
+            
+            .fab-text {
+                display: none;
+            }
+        }
+    `;
+    document.head.appendChild(fabStyles);
+    document.body.appendChild(fab);
+    
+    // Show FAB after scrolling past hero
+    let fabVisible = false;
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY > window.innerHeight * 0.5;
+        
+        if (scrolled && !fabVisible) {
+            fab.style.opacity = '1';
+            fab.style.visibility = 'visible';
+            fabVisible = true;
+        } else if (!scrolled && fabVisible) {
+            fab.style.opacity = '0';
+            fab.style.visibility = 'hidden';
+            fabVisible = false;
+        }
+    });
+}
+
+// Scroll Progress Indicator
+function initScrollProgressIndicator() {
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    progressBar.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: var(--gradient-primary);
+        z-index: 10000;
+        transition: width 0.1s ease;
+        box-shadow: 0 0 10px rgba(74, 155, 60, 0.5);
+    `;
+    document.body.appendChild(progressBar);
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrolled / maxScroll) * 100;
+        progressBar.style.width = Math.min(progress, 100) + '%';
+    });
+}
+
+// Enhanced Smooth Scrolling for Internal Links
+function initSmoothScrollLinks() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                const headerHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Add highlight effect to target section
+                targetElement.style.transition = 'background-color 0.5s ease';
+                const originalBg = targetElement.style.backgroundColor;
+                targetElement.style.backgroundColor = 'rgba(74, 155, 60, 0.05)';
+                
+                setTimeout(() => {
+                    targetElement.style.backgroundColor = originalBg;
+                }, 2000);
+            }
+        });
+    });
+}
+
+// Page transition effects for navigation
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href]');
+    if (link && link.href && !link.href.includes('#') && !link.href.includes('mailto:') && !link.target) {
+        const isInternalLink = link.href.includes(window.location.origin);
+        
+        if (isInternalLink) {
+            e.preventDefault();
+            
+            // Add fade out effect
+            document.body.style.transition = 'opacity 0.3s ease';
+            document.body.style.opacity = '0.7';
+            
+            setTimeout(() => {
+                window.location.href = link.href;
+            }, 300);
+        }
+    }
+});
