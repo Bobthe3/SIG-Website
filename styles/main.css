@@ -1699,6 +1699,89 @@ body {
     padding: var(--spacing-16) 0;
 }
 
+/* Organizational Chart Styles - 4x2 Grid */
+.org-chart-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-6);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--spacing-8);
+}
+
+.org-card {
+    background: var(--white);
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-4);
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.org-card:hover {
+    border-color: var(--primary-green);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.president-card {
+    border: 3px solid var(--primary-green);
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-premium);
+}
+
+.president-card .card-title {
+    color: var(--white);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+}
+
+.president-card .member-name {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.card-title {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-3);
+    padding-bottom: var(--spacing-2);
+    border-bottom: 2px solid var(--gray-200);
+}
+
+.card-members {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+}
+
+.member-name {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Responsive adjustments for org chart grid */
+@media (max-width: 1200px) {
+    .org-chart-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .org-chart-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .org-chart-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .board-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -2510,3 +2593,100 @@ body {
 .mt-4 { margin-top: var(--spacing-4); }
 .mt-6 { margin-top: var(--spacing-6); }
 .mt-8 { margin-top: var(--spacing-8); }
+
+/* Committee Sections */
+.committees {
+    padding: var(--spacing-16) 0 var(--spacing-8) 0;
+    background-color: var(--gray-50);
+}
+
+.committee-section {
+    padding: var(--spacing-12) 0;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.committee-section:last-of-type {
+    border-bottom: none;
+}
+
+.committee-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-6);
+}
+
+.committee-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    flex-shrink: 0;
+}
+
+.committee-icon i {
+    font-size: var(--font-size-3xl);
+    color: var(--white);
+}
+
+.committee-name {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.committee-description {
+    font-size: var(--font-size-lg);
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 900px;
+}
+
+/* Responsive adjustments for committee sections */
+@media (max-width: 768px) {
+    .committee-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .committee-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .committee-icon i {
+        font-size: var(--font-size-2xl);
+    }
+
+    .committee-name {
+        font-size: var(--font-size-2xl);
+    }
+
+    .committee-description {
+        font-size: var(--font-size-base);
+    }
+}
+
+@media (max-width: 480px) {
+    .committee-section {
+        padding: var(--spacing-8) 0;
+    }
+
+    .committee-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .committee-icon i {
+        font-size: var(--font-size-xl);
+    }
+
+    .committee-name {
+        font-size: var(--font-size-xl);
+    }
+}
