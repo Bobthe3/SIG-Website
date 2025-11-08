@@ -2603,6 +2603,7 @@ body {
 .committee-section {
     padding: var(--spacing-12) 0;
     border-bottom: 1px solid var(--gray-200);
+    text-align: center;
 }
 
 .committee-section:last-of-type {
@@ -2611,6 +2612,7 @@ body {
 
 .committee-header {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: var(--spacing-4);
     margin-bottom: var(--spacing-6);
@@ -2645,15 +2647,11 @@ body {
     line-height: 1.8;
     color: var(--text-secondary);
     max-width: 900px;
+    margin: 0 auto;
 }
 
 /* Responsive adjustments for committee sections */
 @media (max-width: 768px) {
-    .committee-header {
-        flex-direction: column;
-        text-align: center;
-    }
-
     .committee-icon {
         width: 70px;
         height: 70px;
@@ -2754,6 +2752,113 @@ body {
     .btn-social {
         width: 100%;
         max-width: 300px;
+    }
+}
+
+/* Coming Soon Section */
+.coming-soon-container {
+    padding: var(--spacing-20) 0;
+    text-align: center;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coming-soon-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.coming-soon-icon {
+    font-size: 80px;
+    color: var(--primary-green);
+    margin-bottom: var(--spacing-6);
+    opacity: 0.8;
+}
+
+.coming-soon-content h2 {
+    font-size: var(--font-size-4xl);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-4);
+    font-weight: 700;
+}
+
+.coming-soon-content p {
+    font-size: var(--font-size-xl);
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .coming-soon-icon {
+        font-size: 60px;
+    }
+
+    .coming-soon-content h2 {
+        font-size: var(--font-size-3xl);
+    }
+
+    .coming-soon-content p {
+        font-size: var(--font-size-lg);
+    }
+}
+
+/* Our Mission Section */
+.our-mission-section {
+    padding: var(--spacing-16) 0;
+    background-color: var(--gray-50);
+    text-align: center;
+}
+
+.our-mission-section .section-title {
+    margin-bottom: var(--spacing-6);
+}
+
+.mission-statement {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: var(--font-size-xl);
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .mission-statement {
+        font-size: var(--font-size-lg);
+    }
+}
+
+/* Why Sustainability Section */
+.why-sustainability-section {
+    padding: var(--spacing-16) 0;
+    background-color: var(--white);
+}
+
+.why-sustainability-section .section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-8);
+}
+
+.why-sustainability-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.why-sustainability-content p {
+    font-size: var(--font-size-lg);
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-6);
+}
+
+.why-sustainability-content p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .why-sustainability-content p {
+        font-size: var(--font-size-base);
     }
 }
 
